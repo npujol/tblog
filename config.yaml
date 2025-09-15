@@ -1,0 +1,19 @@
+baseURL: 'https://tblog.github.io'
+languageCode: 'en-us'
+title: 'My Telegram Blog'
+theme: 'your-theme'
+
+params:
+  description: 'A blog powered by Telegram'
+  author: 'Your Name'
+  
+  # Giscus comments
+  giscus:
+    repo: 'username/blog-repo'
+    repoId: 'your-repo-id'
+    category: 'General'
+    
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
