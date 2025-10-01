@@ -1,0 +1,152 @@
+# GitHub Actions workflow for building and deploying Hugo site to GitHub Pages
+name: Build and Deploy Hugo Site
+
+on:
+  # Trigger on pushes to main branch
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/approved-messages.json'
+      - 'content/**'
+      - 'static/**'
+      - 'config.yaml'
+      - '.github/workflows/hugo.yml'
+
+  # Allow manual triggering via repository dispatch (from approval interface)
+  repository_dispatch:
+    types: [rebuild-site]
+
+  # Allow manual workflow execution
+  workflow_dispatch:
+
+# Set permissions for GitHub Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# Default shell for all jobs
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.120.4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install Node.js dependencies
+        run: npm ci
+        continue-on-error: true # In case package.json doesn't exist yet
+
+      - name: Process approved messages
+        run: |
+          # Create content generation script if it doesn't exist
+          if [ ! -f "scripts/generate-content.js" ]; then
+            echo "Content generation script not found, skipping message processing"
+          else
+            node scripts/generate-content.js
+          fi
+
+      - name: Setup Hugo caching
+        uses: actions/cache@v3
+        with:
+          path: /tmp/hugo_cache
+          key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugomod-
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+
+      - name: Install Hugo themes
+        run: |
+          # Install Ananke theme if not present
+          if [ ! -d "themes/ananke" ]; then
+            git clone https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+          fi
+
+      - name: Build Hugo site
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --gc \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./public
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+  # Cleanup job (optional)
+  cleanup:
+    runs-on: ubuntu-latest
+    needs: [build, deploy]
+    if: success()
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Archive processed messages
+        run: |
+          # Create archive directory if it doesn't exist
+          mkdir -p data/archive
+
+          # Move published messages to archive (script will be created later)
+          if [ -f "scripts/archive-messages.js" ]; then
+            node scripts/archive-messages.js
+          fi
+
+      - name: Commit archived messages
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add data/
+            git commit -m "Archive processed messages [skip ci]" || exit 0
+            git push
+          fi

@@ -1,19 +1,53 @@
-baseURL: 'https://tblog.github.io'
+baseURL: 'https://YOUR-USERNAME.github.io/YOUR-REPO-NAME'
 languageCode: 'en-us'
-title: 'My Telegram Blog'
-theme: 'your-theme'
+title: 'Telegram Bot Blog'
+theme: 'ananke'
 
 params:
-  description: 'A blog powered by Telegram'
+  description: 'Blog posts generated from Telegram bot messages'
   author: 'Your Name'
-  
-  # Giscus comments
-  giscus:
-    repo: 'username/blog-repo'
-    repoId: 'your-repo-id'
-    category: 'General'
-    
+  twitter: ''
+  github: 'YOUR-USERNAME'
+
+  # Enable GitHub Pages compatibility
+  relativeURLs: true
+
+  # Social media and SEO
+  images:
+    - 'images/site-preview.jpg'
+
+menu:
+  main:
+    - name: "Home"
+      url: "/"
+      weight: 10
+    - name: "Posts"
+      url: "/posts/"
+      weight: 20
+    - name: "Tags"
+      url: "/tags/"
+      weight: 30
+    - name: "Admin"
+      url: "/admin/"
+      weight: 40
+
 markup:
   goldmark:
     renderer:
       unsafe: true
+  highlight:
+    style: github
+    lineNos: true
+
+taxonomies:
+  tag: tags
+  category: categories
+
+outputs:
+  home: ["HTML", "RSS"]
+  page: ["HTML"]
+  section: ["HTML", "RSS"]
+
+# Pagination
+paginate: 10
+paginatePath: "page"

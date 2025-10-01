@@ -1,0 +1,29 @@
+{
+  "name": "telegram-bot-blog",
+  "version": "1.0.0",
+  "description": "Hugo blog generated from Telegram bot messages",
+  "main": "scripts/generate-content.js",
+  "scripts": {
+    "build": "hugo --gc --minify",
+    "serve": "hugo server -D",
+    "generate": "node scripts/generate-content.js",
+    "archive": "node scripts/archive-messages.js"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.1",
+    "slugify": "^1.6.6",
+    "yaml": "^2.3.4"
+  },
+  "devDependencies": {
+    "hugo-extended": "^0.120.4"
+  },
+  "keywords": [
+    "hugo",
+    "telegram",
+    "bot",
+    "blog",
+    "static-site"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

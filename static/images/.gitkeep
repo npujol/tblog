@@ -1,0 +1,4 @@
+# Images Directory
+
+This directory will contain images uploaded from Telegram messages.
+Images will be organized in subdirectories by message ID.

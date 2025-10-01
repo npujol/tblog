@@ -1,0 +1,7 @@
+# Data Directory
+
+This directory will contain JSON files for message storage:
+- pending-messages.json
+- approved-messages.json
+- rejected-messages.json
+- published-messages.json

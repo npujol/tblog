@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Message Data Schema",
+  "description": "Schema for Telegram bot message data structure",
+  "type": "object",
+  "properties": {
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique message identifier (format: msg_timestamp_telegramId)"
+          },
+          "telegram_message_id": {
+            "type": "integer",
+            "description": "Original Telegram message ID"
+          },
+          "content": {
+            "type": "string",
+            "description": "Message text content"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "filename": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "caption": {
+                  "type": "string"
+                }
+              },
+              "required": ["filename", "path"]
+            }
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Original message timestamp"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "approved", "rejected", "published"],
+            "description": "Message processing status"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Tags assigned to the message"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When message was received by system"
+          },
+          "approved_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When message was approved"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When message was published as blog post"
+          }
+        },
+        "required": ["id", "telegram_message_id", "content", "timestamp", "status", "created_at"]
+      }
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": ["messages", "lastUpdated", "version"]
+}
