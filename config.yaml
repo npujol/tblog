@@ -49,5 +49,5 @@ outputs:
   section: ["HTML", "RSS"]
 
 # Pagination
-paginate: 10
-paginatePath: "page"
+pagination.paperSize: 10
+pagination.path: "page"
