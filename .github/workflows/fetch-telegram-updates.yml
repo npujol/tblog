@@ -1,0 +1,73 @@
+# GitHub Actions workflow for fetching Telegram updates daily
+name: Fetch Telegram Updates
+
+on:
+  # Run daily at midnight UTC
+  schedule:
+    - cron: '0 0 * * *'
+
+  # Allow manual triggering
+  workflow_dispatch:
+
+# Set permissions for GitHub API access
+permissions:
+  contents: write
+
+# Default shell for all jobs
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  fetch-updates:
+    runs-on: ubuntu-latest
+    env:
+      PYTHON_VERSION: '3.11'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Verify Python installation
+        run: |
+          echo "Python: $(python --version)"
+          echo "Pip: $(pip --version)"
+
+      - name: Fetch Telegram updates
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER: ${{ github.repository_owner }}
+          GITHUB_REPO: ${{ github.event.repository.name }}
+        run: |
+          python scripts/fetch_telegram_updates.py
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/
+          git commit -m "Add new pending messages from Telegram [skip ci]"
+          git push
+
+      - name: Trigger Hugo build if changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          echo "New messages added, Hugo workflow will be triggered on push"
