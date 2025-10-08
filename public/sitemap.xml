@@ -2,27 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/YOUR-REPO-NAME/tags/bot/</loc>
+    <loc>http://localhost:1313/tblog/tags/bot/</loc>
     <lastmod>2025-09-29T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/YOUR-REPO-NAME/posts/</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tblog/posts/</loc>
     <lastmod>2025-09-29T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/YOUR-REPO-NAME/tags/</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tblog/tags/</loc>
     <lastmod>2025-09-29T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/YOUR-REPO-NAME/tags/telegram/</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tblog/tags/telegram/</loc>
     <lastmod>2025-09-29T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/YOUR-REPO-NAME/tags/welcome/</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tblog/tags/welcome/</loc>
     <lastmod>2025-09-29T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/YOUR-REPO-NAME/posts/2025-09-29-sample-telegram-post/</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tblog/posts/2025-09-29-sample-telegram-post/</loc>
     <lastmod>2025-09-29T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/YOUR-REPO-NAME/</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tblog/</loc>
     <lastmod>2025-09-29T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/YOUR-REPO-NAME/categories/</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/tblog/categories/</loc>
   </url>
 </urlset>

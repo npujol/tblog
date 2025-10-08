@@ -1,13 +1,13 @@
-baseURL: 'https://YOUR-USERNAME.github.io/YOUR-REPO-NAME'
+baseURL: 'https://npujol.github.io/tblog/'
 languageCode: 'en-us'
 title: 'Telegram Bot Blog'
 theme: 'ananke'
 
 params:
   description: 'Blog posts generated from Telegram bot messages'
-  author: 'Your Name'
+  author: 'Naivy Pujol Méndez'
   twitter: ''
-  github: 'YOUR-USERNAME'
+  github: 'npujol'
 
   # Enable GitHub Pages compatibility
   relativeURLs: true

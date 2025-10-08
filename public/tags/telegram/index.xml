@@ -2,18 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Telegram on Telegram Bot Blog</title>
-    <link>http://localhost:1313/YOUR-REPO-NAME/tags/telegram/</link>
+    <link>http://localhost:1313/tblog/tags/telegram/</link>
     <description>Recent content in Telegram on Telegram Bot Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 29 Sep 2025 12:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/YOUR-REPO-NAME/tags/telegram/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tblog/tags/telegram/index.xml" rel="self"
+      type="application/rss+xml" />
     <item>
       <title>Welcome to our Telegram Bot Blog!</title>
-      <link>http://localhost:1313/YOUR-REPO-NAME/posts/2025-09-29-sample-telegram-post/</link>
+      <link>http://localhost:1313/tblog/posts/2025-09-29-sample-telegram-post/</link>
       <pubDate>Mon, 29 Sep 2025 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/YOUR-REPO-NAME/posts/2025-09-29-sample-telegram-post/</guid>
-      <description>&lt;h1 id=&#34;welcome-to-our-automated-blog&#34;&gt;Welcome to our automated blog!&lt;/h1&gt;&#xA;&lt;p&gt;This is a sample post to demonstrate how messages from our Telegram bot are converted into beautiful blog posts.&lt;/p&gt;&#xA;&lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;✅ Real-time message processing&lt;/li&gt;&#xA;&lt;li&gt;✅ Manual approval workflow&lt;/li&gt;&#xA;&lt;li&gt;✅ Image support with captions&lt;/li&gt;&#xA;&lt;li&gt;✅ Tag-based organization&lt;/li&gt;&#xA;&lt;li&gt;✅ Automated deployment&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The system automatically processes messages from Telegram, allows for manual review and approval, and publishes approved content to this Hugo-powered blog.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;em&gt;This post was automatically generated from Telegram message 1 on September 29, 2025 at 12:00 PM.&lt;/em&gt;&lt;/p&gt;</description>
+      <guid>http://localhost:1313/tblog/posts/2025-09-29-sample-telegram-post/</guid>
+      <description>&lt;h1 id=&#34;welcome-to-our-automated-blog&#34;&gt;Welcome to our automated
+        blog!&lt;/h1&gt;&#xA;&lt;p&gt;This is a sample post to demonstrate how messages from our
+        Telegram bot are converted into beautiful blog posts.&lt;/p&gt;&#xA;&lt;h2
+        id=&#34;features&#34;&gt;Features&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;✅ Real-time
+        message processing&lt;/li&gt;&#xA;&lt;li&gt;✅ Manual approval
+        workflow&lt;/li&gt;&#xA;&lt;li&gt;✅ Image support with captions&lt;/li&gt;&#xA;&lt;li&gt;✅
+        Tag-based organization&lt;/li&gt;&#xA;&lt;li&gt;✅ Automated
+        deployment&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The system automatically processes
+        messages from Telegram, allows for manual review and approval, and publishes approved
+        content to this Hugo-powered blog.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;em&gt;This post
+        was automatically generated from Telegram message 1 on September 29, 2025 at 12:00
+        PM.&lt;/em&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

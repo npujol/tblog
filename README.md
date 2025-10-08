@@ -64,7 +64,7 @@ A complete system for automatically converting Telegram bot messages into blog p
    - Go to GitHub Settings → Developer settings → Personal access tokens
    - Generate token with `repo` scope
 2. **Access approval interface**:
-   - Visit: `https://your-username.github.io/your-repo-name/admin/`
+   - Visit: `https://npujol.github.io/tblog/admin/`
    - Enter your GitHub token to connect
 
 ## 🔧 Usage
@@ -262,8 +262,8 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/YOUR-USERNAME/YOUR-REPO/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/YOUR-USERNAME/YOUR-REPO/discussions)
+- **Issues**: [GitHub Issues](https://github.com/npujol/tblog/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/npujol/tblog/discussions)
 - **Documentation**: This README and inline code comments
 
 ---
