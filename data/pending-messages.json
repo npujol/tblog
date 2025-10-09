@@ -1,31 +1,5 @@
 {
-  "messages": [
-    {
-      "id": "msg_1760041509_7",
-      "telegram_message_id": 7,
-      "content": "Example2",
-      "images": [
-        {
-          "filename": "msg_1760041509_7_AgACAgEAAxkBAAMEaOgEwIxmm9o7FCELm16J8D1F7eQAAikMaxuzTEFHjJc3mgzbe5UBAAMCAAN4AAM2BA.jpg",
-          "path": "/images/msg_1760041509_7/msg_1760041509_7_AgACAgEAAxkBAAMEaOgEwIxmm9o7FCELm16J8D1F7eQAAikMaxuzTEFHjJc3mgzbe5UBAAMCAAN4AAM2BA.jpg",
-          "caption": "Example2",
-          "file_id": "AgACAgEAAxkBAAMEaOgEwIxmm9o7FCELm16J8D1F7eQAAikMaxuzTEFHjJc3mgzbe5UBAAMCAAN4AAM2BA",
-          "file_size": 62899
-        }
-      ],
-      "timestamp": "2025-10-09T20:25:09",
-      "status": "pending",
-      "tags": [],
-      "created_at": "2025-10-09T20:25:36.249052",
-      "chat_id": 488065734,
-      "from_user": {
-        "id": 488065734,
-        "username": "nailunita",
-        "first_name": "Nai",
-        "last_name": null
-      }
-    }
-  ],
-  "lastUpdated": "2025-10-09T20:25:38.030486",
+  "messages": [],
+  "lastUpdated": "2025-10-09T20:26:55.296Z",
   "version": "1.0"
 }
