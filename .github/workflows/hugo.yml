@@ -68,6 +68,15 @@ jobs:
       - name: Install Node.js dependencies
         run: |
           [[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true
+
+      - name: Process approved messages
+        run: |
+          # Create content generation script if it doesn't exist
+          if [ ! -f "scripts/generate-content.js" ]; then
+            echo "Content generation script not found, skipping message processing"
+          else
+            node scripts/generate-content.js
+          fi
       - name: Configure Git
         run: |
           git config core.quotepath false
@@ -77,8 +86,7 @@ jobs:
         with:
           path: ${{ runner.temp }}/hugo_cache
           key: hugo-${{ github.run_id }}
-          restore-keys:
-            hugo-
+          restore-keys: hugo-
       - name: Build the site
         run: |
           hugo \
