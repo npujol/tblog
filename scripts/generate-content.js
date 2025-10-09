@@ -11,6 +11,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const slugify = require('slugify');
 const YAML = require('yaml');
+const project_name = process.env.project_name || 'tblog';
 
 // Configuration
 const DATA_DIR = path.join(__dirname, '..', 'data');
@@ -140,7 +141,7 @@ async function generateHugoPost(message) {
         content += '\n\n';
 
         for (const image of message.images) {
-            const imagePath = image.path.replace('/images/', '/tblog/images/'); // Convert to Hugo static path
+            const imagePath = image.path.replace('/images/', '/' + project_name + '/images/'); // Convert to Hugo static path
             const altText = image.caption || `Image from ${message.id}`;
 
             content += `![${altText}](${imagePath})\n`;
