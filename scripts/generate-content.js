@@ -128,7 +128,7 @@ async function generateHugoPost(message) {
     // Add images to front matter if present
     if (message.images && message.images.length > 0) {
         frontMatter.images = message.images.map(img =>
-            img.path.replace('/static/', '/tblog/') // Convert to Hugo static path
+            img.path.replace('/static/', '/') // Convert to Hugo static path
         );
     }
 
@@ -140,7 +140,7 @@ async function generateHugoPost(message) {
         content += '\n\n';
 
         for (const image of message.images) {
-            const imagePath = image.path.replace('/static/', '/tblog/'); // Convert to Hugo static path
+            const imagePath = image.path.replace('/images/', '/tblog/images/'); // Convert to Hugo static path
             const altText = image.caption || `Image from ${message.id}`;
 
             content += `![${altText}](${imagePath})\n`;
